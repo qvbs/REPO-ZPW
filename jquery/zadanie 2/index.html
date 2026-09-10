@@ -8,18 +8,19 @@
     crossorigin="anonymous">
     </script>
     <script>
-        $(document).ready(function(){
-            console.log("test");
-        });
 
         $(function(){
-            $("#container").css("background-color","grey");
-            $("#container").css("letter-spacing","5px");
-            $('[href="#"]').attr("href","https://pl.wikipedia.org/wiki/Gra_komputerowa");
-            $("#minecraft").attr("style","font-weight:bold");
-            $("li").eq(3).css("background-color","lightgrey");
-            $("li").not("#pierwszy").css("background-color","lightblue"); //chainowanie laczenie kolejnych metod ze sobą
-            
+            console.log($("li").eq(0).text());
+            console.log($("ul").html());
+
+            let $ul = $("ul").html();
+            $("ul").append("<li>"+"Blood of Dawnwalker"+"</li>");
+            let element = $("li").last().remove() //
+            $("ul").prepend(element);         // usuwa ostatni element listy i dodaje go na poczatek 
+
+            let $h1 = $("h1").text();          // naglowek przenosi na liste pod spodem
+            $("ul").after("<p>"+$h1+"</p>"); // ...
+
         });
 
     </script>
@@ -60,7 +61,7 @@
     <h1>Lista Gier Komputerowych</h1>
  
     <ul>
-        <li id="pierwszy"><a href="#">Witcher 3: Wild Hunt</a></li>
+        <li><a href="#">Witcher 3: Wild Hunt</a></li>
         <li><a href="#">Cyberpunk 2077</a></li>
         <li><a href="#">Elden Ring</a></li>
         <li><a href="#">Baldur's Gate 3</a></li>
