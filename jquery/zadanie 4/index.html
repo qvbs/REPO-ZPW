@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Jquery</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+    crossorigin="anonymous">
+    </script>
+   
+    <style>
+        #div { width: 150px; height: 150px; background: lightgray; }
+    </style>
+</head>
+<body>
+
+
+  <p id="paragraf"></p>
+ 
+  <div id="div"></div>
+ 
+  <script>
+    $(function() {
+      let $i = 0;
+      $("#div").click(function(){
+            $i++
+            $("#paragraf").empty();
+            $("#paragraf").append("kliknieto" + $i +"razy");    
+      })
+        
+      $("#naKoniec").click(function(){
+            let value = $("input").val();
+            if(value.length > 0 ){
+            $("ul").append("<li>" + value + "</li>");
+            $("li").last().css({
+              "color":"blue",
+              "font-weight":"bold"
+            });
+            $("input").val("");
+          }
+      })
+      $("#naPoczatek").click(function(){
+            if(value.length > 0 ){
+            let value = $("input").val();
+            $("ul").prepend("<li>" + value + "</li>");
+            $("li").first().css({
+              "color":"green",
+              "font-weight":"bold"
+            });
+            $("input").val("");
+          }
+      })
+
+    
+    });
+
+  </script>
+
+  <ul id="lista">
+  <li>Chleb</li>
+  <li>Mleko</li>
+    </ul>
+    <input type="text" id="produkt" placeholder="Nazwa produktu">
+    <button id="naKoniec">Dodaj na koniec</button>
+    <button id="naPoczatek">Dodaj na początek</button>
+  
+
+</body>
+</html>
