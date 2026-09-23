@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona jquery</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+    crossorigin="anonymous">
+    </script>
+    <script>
+        $(function(){
+            $("#zmien").click(function(){
+                $("#tekst").text("nowy tekst")
+            })
+            $("#przelacz").click(function(){
+                $("#pudelko").toggle();
+            })
+            $(".akapit").click(function(){
+                $(this).toggleClass("podswielony");
+            })
+            $("#przywitaj").click(function(){
+                let imie = $("input").val();
+                if(imie === ''){
+                    $("#wynik").text("podaj imie:")
+                }else{
+                    $("#wynik").text("czesc, "+imie)
+                }
+            })
+        });
+    </script>
+    <style>
+        .podswielony {background-color: yellow;}
+    </style>
+</head>
+    <body>
+        <p id="tekst">Stary tekst</p>
+        <button id="zmien">Zmień</button>
+
+        <div id="pudelko">Widzisz mnie</div>
+            <button id="przelacz">Pokaz/ukryj</button>
+        <p class="akapit">Kliknij mnie</p>
+
+        <input type="text" id="imie">
+        <button id="przywitaj">przywitaj</button>
+        <p id="wynik"></p>
+    </body>
+</html>
