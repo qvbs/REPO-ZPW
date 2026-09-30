@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+    crossorigin="anonymous">
+    </script>
+    <title>Strona jquery</title>
+    <script>
+        $(function(){
+            //Object event
+            $(document).on("keydown keyup keypress", function(){
+                $('#eventType').text(event.type);
+            })
+
+            $(document).on("mousemove", function(){
+                $('#pageX').text(event.pageX);
+                $('#pageY').text(event.pageY);
+            })
+            let pozycjaX = 0;
+            let pozycjaY = 0;
+            $(document).on("keydown",function(){
+            if(event.key == 'a'){
+                pozycjaX = pozycjaX - 10
+                $('#kwadrat').css("margin-left",pozycjaX+"px")
+            }
+            if(event.key == 'd'){
+                pozycjaX = pozycjaX + 10
+                $('#kwadrat').css("margin-left",pozycjaX+"px")
+            }
+            if(event.key == 'w'){
+                pozycjaY = pozycjaY - 10
+                $('#kwadrat').css("margin-top",pozycjaY+"px")
+            }
+            if(event.key == 's'){
+                pozycjaY = pozycjaY + 10
+                $('#kwadrat').css("margin-top",pozycjaY+"px")
+            }
+            })
+            $("#jablko").css({
+                "margin-left": Math.floor((Math.random() * 500)+ 1)+"px",
+                "margin-top": Math.floor((Math.random() * 500) + 1)+ "px"
+            })
+            //jak zrobic gdy dojdzie do kolizji jablko znika a czerwony kwadrat zwieksza sie o 10px
+        })
+    </script>
+    <style>
+        #kwadrat{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+        }
+        #jablko{
+            width: 20px;
+            height: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="kwadrat"></div>
+    <!-- <input type="text" id="pole">
+
+    <p>
+        Typ zdarzenia:
+        <span id="eventType">---</span>
+    </p>
+
+    <p>
+        Pozycja myszy:
+        X = <span id="pageX">---</span>
+        Y = <span id="pageY">---</span>
+    </p> -->
+<div id="jablko"></div>
+
+</body>
+</html>
