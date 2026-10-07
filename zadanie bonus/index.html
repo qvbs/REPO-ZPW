@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+    crossorigin="anonymous">
+    </script>
+    <script>
+        $(function(){
+            let y = 0;
+            $("#losowanie").click(function(){
+                $("#divy").text(" ")
+                let x = Math.floor((Math.random() * 10) + 1)
+                $("#test").text(x)
+
+                for(i = 0; i < x; i++) {
+                    $("#divy").append("<div id='kwadrat'></div>");
+                }
+            })
+            $("#start").click(function(){
+
+                let x = Math.floor((Math.random() * 1000) + 1);
+                let y = Math.floor((Math.random() * 1000) + 1);
+                console.log(x);
+                $("#kolo").css({
+                "margin-left": y + "px",
+                "margin-top": x + "px"
+                })
+                $("body").append("<div id='kolo'></div>")
+            })
+            $("#kolo").click(function(){
+                y++
+                $("#wynik").text(y)
+            })
+            $("#dodajKarte").click(function(){
+                $("#conatiner").append("<div class='card'></div>")
+                let kolorx = Math.floor((Math.random() * 256))
+                let kolory = Math.floor((Math.random() * 256))
+                let kolorz = Math.floor((Math.random() * 256))
+                $(".card").css("background-color","(" + kolorx +", " + kolory + ", " + kolorz + ")")
+            })
+        })
+        
+    </script>
+
+    <style>
+        #kwadrat {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 2px;
+        }
+        #kolo {
+            width: 50px;
+            height: 50px;
+            background-color: lime;
+            border-radius: 100%;
+        }
+    </style>
+</head>
+<body>
+ 
+    <button id="losowanie">przycisk</button>
+    <p id="test"></p>
+
+    <div id="divy"></div>
+
+    <button id="start">START</button>
+    <p id="wynik"></p>
+    <button id="dodajKarte">Dodaj kartę</button>
+    <button>Usuń wszystkie</button>
+    <div id="container"></div>
+</body>
+</html>
