@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+    crossorigin="anonymous">
+    </script>
+    <script>
+        $(function(){
+        //    $("#schowaj").click(function(){
+        //         $("p").hide() //znika paragraf po nacisnieciu 
+        //     })
+        //     $("#pokaz").click(function(){
+        //         $("p").show() //pojawia sie
+        //     })
+        //     $("#toggle").click(function(){
+        //         $("p").toggle() //przelacza
+        //     })
+        //     $("#slideup").click(function(){
+        //         $("p").slideUp() //animacja do gory chowania 
+        //     })
+        //     $("#slideDown").click(function(){
+        //         $("p").slideDown() //animacja pokazywania tego co zostalo zwiniete
+        //     })
+        //     $("#slideToggle").click(function(){
+        //         $("p").slideToggle() //animacja pokazywania i chowania przelaczana jednym przyciskiem
+        //     }) 
+
+            $("#kwadrat").hide()
+            $("#wyjasnienie").hide()
+            $("#zatwierdz").click(function(){
+                if ($('#odp1').is(":checked")) {
+                    $("#o1").css("background-color", "lime")
+                }
+                if ($('#odp2').is(":checked")) {
+                    $("#o2").css("background-color", "red")
+                    $("#wyjasnienie").slideDown()
+                }
+                if ($('#odp3').is(":checked")) {
+                    $("#o3").css("background-color", "red")
+                    $("#wyjasnienie").slideDown()
+                }
+                if ($('#odp4').is(":checked")) {
+                    $("#o4").css("background-color", "red")
+                    $("#wyjasnienie").slideDown()
+                }
+            })
+        })
+        
+    </script>
+
+    <style>
+        #kwadrat {
+            width: 100px;
+            height: 100px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <p>ŁKS czy Widzew?</p>
+    <input type="radio" id="odp1" name="odp">
+    <label id="o1">ŁKS</label><br>
+    <input type="radio" id="odp2" name="odp">
+    <label id="o2">Widzew</label><br>  
+    <input type="radio" id="odp3" name="odp">
+    <label id="o3">Żadne z powyższych</label><br>
+    <input type="radio" id="odp4" name="odp">
+    <label id="o4">Wolę nie odpowiadać</label><br>
+    <div id="kwadrat"></div>
+    <button id="zatwierdz">ZATWIERDŹ</button>
+    <p id="wyjasnienie">!!!!Każdy wie że jedyna odpowiednia odpowiedź to ŁKS!!!!</p>
+
+</body>
+</html>
