@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona jquery</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" 
+    crossorigin="anonymous">
+    </script>
+    <script>
+        $(function(){
+            $("#sprawdz").click(function(){
+                let imie = $("#imie").val().trim()
+                if(imie === ""){
+                    $("#blad").text("Pole imie jest wymagane")
+                }else{
+                    $("#blad").text("twoje mie to: " + imie)
+                }
+            })
+            $("#form").submit(function(e){
+                e.preventDefault();
+                let Nazwisko = $("#Nazwisko").val().trim()
+                if(Nazwisko === ""){
+                    $("#error").text("Podaj nazwisko")
+                }else{
+                    $("#error").text("Wyslano formularz")
+                }
+            })
+            //walidacja wiek
+            $("#sprawdzWiek").click(function(){
+                let wiek = Number($("#wiek").val())
+                if(isNaN(wiek)){
+                    $("#bladWiek").text("Wiek musi byc liczba")
+                }else{
+                    $("#bladWiek").text("Masz "+ wiek + " lat")
+                }
+            })
+            $("#zapiszOcene").click(function(){
+                let ocena = Number($("#Ocena").val())
+                if(isNaN(ocena)){
+                    $("#bladOcena")     //tu ma wyswietlaac Ocene w zakresie 1-6 
+                }
+            })
+        });
+    </script>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <input type="text" id="imie">
+    <button id="sprawdz">Sprawdź</button>
+    <p id="blad"></p>
+    <hr>
+    <form id="form">
+        <label for="Nazwisko">Nazwisko</label>
+        <input type="text" id="Nazwisko"><br>
+        <button type="submit" id="Wyslij">Wyślij</button>
+        <p id="error"></p>
+    </form>
+    <hr>
+    <input type="text" id="wiek">
+    <button id="sprawdzWiek">sprawdz</button>
+    <p id="bladWiek"></p>
+    <hr>
+    <input type="text" id="Ocena">
+    <button id="zapiszOcene">Zapisz</button>
+    <p id="bladOcena"></p>
+</body>
+</html>
