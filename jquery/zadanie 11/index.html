@@ -18,9 +18,15 @@
                 }
             })
             $("#login").submit(function(e){
-                            
-            })
-        });
+            e.preventDefault(); 
+            if($("#haslo").val().length < 6){
+                $("#infohaslo").text("Hasło jest za krótkie").css("color", "red");
+                    } else {
+                $("#infohaslo").text("Zalogowano").css("color", "green");
+                }
+            });
+        });                                  
+            
     </script>
     <style>
       
@@ -37,8 +43,9 @@
         <label for="email">E-mail</label>
         <input type="text" id="Email"><br>
         <label for="password">Haslo</label>
-        <input type="password" id="Email">
+        <input type="password" id="haslo">
         <button type="submit">Sprawdz</button>
+        <p id="infohaslo"></p>
     </form>
 </body>
 </html>
