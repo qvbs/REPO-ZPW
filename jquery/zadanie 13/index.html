@@ -36,9 +36,18 @@
                 }
             })
             $("#zapiszOcene").click(function(){
-                let ocena = Number($("#Ocena").val())
-                if(isNaN(ocena)){
-                    $("#bladOcena")     //tu ma wyswietlaac Ocene w zakresie 1-6 
+                let ocenaVal = $("#Ocena").val().trim();
+                // Sprawdzenie czy pole jest puste lub nie jest liczbą
+                if(ocenaVal === "" || isNaN(ocenaVal)){
+                    $("#bladOcena").text("To nie jest liczba");
+                } else {
+                    let ocena = Number(ocenaVal);
+                    // Sprawdzenie zakresu od 1 do 6
+                    if(ocena < 1 || ocena > 6){
+                        $("#bladOcena").text("Ocena musi być z zakresu 1-6");
+                    } else {
+                        $("#bladOcena").text("Zapisano ocenę: " + ocena);
+                    }
                 }
             })
         });
@@ -48,6 +57,7 @@
     </style>
 </head>
 <body>
+    <label for="imie">napisz swoje imie</label>
     <input type="text" id="imie">
     <button id="sprawdz">Sprawdź</button>
     <p id="blad"></p>
@@ -59,10 +69,12 @@
         <p id="error"></p>
     </form>
     <hr>
+    <label for="wiek">Napisz swoj wiek</label>
     <input type="text" id="wiek">
     <button id="sprawdzWiek">sprawdz</button>
     <p id="bladWiek"></p>
     <hr>
+    <label for="ocena">Napisz ocene</label>
     <input type="text" id="Ocena">
     <button id="zapiszOcene">Zapisz</button>
     <p id="bladOcena"></p>
