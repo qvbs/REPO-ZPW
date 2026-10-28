@@ -36,28 +36,14 @@
                 }
             })
             $("#zapiszOcene").click(function(){
-<<<<<<< HEAD
-                let ocena = Number($("#Ocena").val())
-                if(isNaN(ocena)){
-                    $("#bladOcena").text("to nie jest liczba")     //tu ma wyswietlaac Ocene w zakresie 1-6 
-                }
-                if(ocena > 1 || ocena < 6){
-                    
-=======
                 let ocenaVal = $("#Ocena").val().trim();
-                // Sprawdzenie czy pole jest puste lub nie jest liczbą
-                if(ocenaVal === "" || isNaN(ocenaVal)){
+                if(ocenaVal === "" && isNaN(ocenaVal)){
                     $("#bladOcena").text("To nie jest liczba");
-                } else {
-                    let ocena = Number(ocenaVal);
-                    // Sprawdzenie zakresu od 1 do 6
-                    if(ocena < 1 || ocena > 6){
+                } else if(ocena < 1 && ocena > 6){                   
                         $("#bladOcena").text("Ocena musi być z zakresu 1-6");
                     } else {
-                        $("#bladOcena").text("Zapisano ocenę: " + ocena);
+                        $("#bladOcena").text("Zapisano ocenę: " + ocenaVal);
                     }
->>>>>>> 171b0d2c46321ec7028e5a2cddd64dea63aeb7dc
-                }
             })
         });
     </script>
