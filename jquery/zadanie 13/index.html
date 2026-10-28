@@ -38,7 +38,10 @@
             $("#zapiszOcene").click(function(){
                 let ocena = Number($("#Ocena").val())
                 if(isNaN(ocena)){
-                    $("#bladOcena")     //tu ma wyswietlaac Ocene w zakresie 1-6 
+                    $("#bladOcena").text("to nie jest liczba")     //tu ma wyswietlaac Ocene w zakresie 1-6 
+                }
+                if(ocena > 1 || ocena < 6){
+                    
                 }
             })
         });
