@@ -46,15 +46,45 @@
                     $("#info").text("Witaj "+ login+ "!").css("color","green")
                 }
             })
-            //do dokonczenia
             $("#rozmiar").change(function(){
-                $("#tekst").css("font-size",$(this).val())
-                $("#tekst").append(" Aktualny rozmiar:"+$(this).val()+"px")
-            })
-            $(".dodatek:checked").each(function(){
-                let bazowa = $("#suma")
-                if($(".dodatek").is(":checked")){}
-            })
+            let rozmiar = $(this).val();
+
+            $("#tekst").css("font-size", rozmiar + "px");
+            $("#tekst").append("Aktualny rozmiar: " + rozmiar + " px");
+            });
+
+            function obliczCene() {
+            let suma = 20;
+            $(".dodatek:checked").each(function() {
+            suma += Number($(this).val());
+            });
+            $("#suma").text(suma + " zł");
+        }
+            $(".dodatek").change(function() {
+            obliczCene();
+            });
+
+        $("#akcept").change(function() {
+            $("#zamow").prop("disabled", !$(this).is(":checked"));
+            });
+        $("#licz").click(function() {
+        let waga = $("#waga").val().trim();
+        let wzrost = $("#wzrost").val().trim();
+
+        if (waga === "" || wzrost === "") {
+            $("#bmi").text("Uzupełnij oba pola");
+        } else if (isNaN(waga) || isNaN(wzrost)) {
+            $("#bmi").text("Podaj poprawne liczby");
+        } else if (Number(waga) < 20 || Number(waga) > 300) {
+            $("#bmi").text("Waga musi być w zakresie 20–300 kg");
+        } else if (Number(wzrost) < 100 || Number(wzrost) > 250) {
+            $("#bmi").text("Wzrost musi być w zakresie 100–250 cm");
+        } else {
+            let bmi = Number(waga) / ((Number(wzrost) / 100) * (Number(wzrost) / 100));
+            $("#bmi").text("Twoje BMI wynosi: " + bmi.toFixed(1));
+        }
+});
+
         });
     </script>
     <style>
@@ -91,7 +121,7 @@ Zadanie 2: Limit długości hasła -->
 
 <!-- Zablokuj wysłanie formularza (preventDefault). Jeśli login jest pusty → „Podaj login”. Jeśli hasło ma mniej niż 6 znaków → „Hasło za krótkie”. W przeciwnym razie → „Witaj, [login]!” na zielono. -->
 
-Zadanie 4: Wybór rozmiaru czcionki
+<!-- Zadanie 4: Wybór rozmiaru czcionki -->
 
 <select id="rozmiar">
   <option value="14">Mały</option>
@@ -100,9 +130,9 @@ Zadanie 4: Wybór rozmiaru czcionki
 </select>
 <p id="tekst">Przykładowy tekst akapitu.</p>
 
-Po zmianie opcji ustaw font-size akapitu #tekst na wybraną wartość w pikselach. Dodatkowo wypisz pod spodem „Aktualny rozmiar: X px”.
+<!-- Po zmianie opcji ustaw font-size akapitu #tekst na wybraną wartość w pikselach. Dodatkowo wypisz pod spodem „Aktualny rozmiar: X px”. -->
 
-Zadanie 5: Zamówienie z dodatkami
+<!-- Zadanie 5: Zamówienie z dodatkami -->
 
 <label><input type="checkbox" class="dodatek" value="3"> Ser (3 zł)</label>
 <label><input type="checkbox" class="dodatek" value="5"> Szynka (5 zł)</label>
@@ -110,22 +140,22 @@ Zadanie 5: Zamówienie z dodatkami
 <p>Cena: <span id="suma">20</span> zł</p>
 <label><input type="checkbox" id="akcept"> Potwierdzam zamówienie</label>
 <button id="zamow" disabled>Zamów</button>
-Cena bazowa to 20 zł. Po zaznaczeniu lub odznaczeniu dodatku przelicz sumę (wskazówka: $(".dodatek:checked").each(...) i Number()).
-Przycisk „Zamów” jest aktywny tylko, gdy zaznaczono #akcept.
+<!-- Cena bazowa to 20 zł. Po zaznaczeniu lub odznaczeniu dodatku przelicz sumę (wskazówka: $(".dodatek:checked").each(...) i Number()).
+Przycisk „Zamów” jest aktywny tylko, gdy zaznaczono #akcept. -->
 
-Zadanie 6: Kalkulator BMI z walidacją
+<!-- Zadanie 6: Kalkulator BMI z walidacją -->
 
 <input type="text" id="waga" placeholder="Waga (kg)">
 <input type="text" id="wzrost" placeholder="Wzrost (cm)">
 <button id="licz">Oblicz</button>
 <p id="bmi"></p>
 
-Po kliknięciu sprawdź:
+<!-- Po kliknięciu sprawdź:
 
 czy oba pola są wypełnione (trim()),
 czy to liczby (isNaN),
 czy waga mieści się w zakresie 20–300, a wzrost w zakresie 100–250.
 
 Przy błędzie wypisz odpowiedni komunikat na czerwono. Jeśli wszystko jest w porządku, wylicz BMI (waga / (wzrost/100)²), zaokrąglij do 1 miejsca (toFixed(1)) i wypisz wynik.
-</body>
+</body> -->
 </html>
